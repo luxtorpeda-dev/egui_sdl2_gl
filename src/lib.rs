@@ -93,11 +93,21 @@ pub fn with_sdl2(
         Ok(dpi) => {
             println!("found dpi: {:?}", dpi);
             dpi_value = dpi.0;
+
+            if dpi.1 > dpi_value {
+                dpi_value = dpi.1;
+            }
+            if dpi.2 > dpi_value {
+                dpi_value = dpi.2;
+            }
         }
         Err(err) => {
             println!("error getting dpi: {:?}", err);
         }
     };
+
+    println!("using dpi_value: {:?}", dpi_value);
+
     let scale = match scale {
         DpiScaling::Default => 96.0 / dpi_value,
         DpiScaling::Custom(custom) => {
