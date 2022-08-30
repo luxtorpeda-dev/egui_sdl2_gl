@@ -16,7 +16,7 @@ include = ["**/*.rs", "Cargo.toml"]
 [dependencies]
 gl = "0.14"
 egui = "0.16"
-sdl2 = { git = "https://github.com/Rust-SDL2/rust-sdl2", rev = "41e9250f1ef527034ee7ef28a1a1996b8019f49d" }
+sdl2 = "0.35"
 
 [dependencies.epi]
 version = "0.16"
