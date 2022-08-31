@@ -87,24 +87,9 @@ pub fn with_sdl2(
     window: &sdl2::video::Window,
     shader_ver: ShaderVersion,
     scale: DpiScaling,
+    given_dpi: f32
 ) -> (Painter, EguiStateHandler) {
-    let mut dpi_value = 80.0;
-    match window.subsystem().display_dpi(0) {
-        Ok(dpi) => {
-            println!("found dpi: {:?}", dpi);
-            dpi_value = dpi.0;
-
-            if dpi.1 > dpi_value {
-                dpi_value = dpi.1;
-            }
-            if dpi.2 > dpi_value {
-                dpi_value = dpi.2;
-            }
-        }
-        Err(err) => {
-            println!("error getting dpi: {:?}", err);
-        }
-    };
+    let dpi_value = given_dpi;
 
     println!("using dpi_value: {:?}", dpi_value);
 
